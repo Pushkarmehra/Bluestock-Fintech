@@ -7,9 +7,7 @@ schemes = {
     "ICICI_Bluechip":120503,
     "Nippon_Large_Cap":118632,
     "Axis_Bluechip":119092,
-    "Kotak_Bluechip":120841} # put All the value in key-value pair dict so its easy to acceses and makw it easy
-# to access
-schemes.items()
+    "Kotak_Bluechip":120841} 
 all_df=[]
 for scheme_name,amfi_code in schemes.items():
     url=f"https://api.mfapi.in/mf/{amfi_code}"
