@@ -1,0 +1,62 @@
+# config.yaml
+# Bluestock Fintech — Indian MF Industry Capstone
+# Pipeline configuration: data paths, AMFI source URLs, and feature flags.
+
+project:
+  name: "Indian MF Industry Analytics"
+  version: "1.0"
+  organisation: "Bluestock Fintech"
+  period_start: "2022-01-01"
+  period_end: "2025-03-31"
+
+paths:
+  raw_dir: "data/raw"
+  clean_dir: "data/clean"
+  charts_dir: "outputs/charts"
+  analytics_dir: "outputs/analytics"
+  advanced_dir: "outputs/advanced"
+  reports_dir: "reports"
+  log_dir: "logs"
+
+data_sources:
+  amfi_base_url: "https://www.amfiindia.com"
+  nav_history: "https://www.amfiindia.com/spages/NAVAll.txt"
+  fund_master: "https://www.amfiindia.com/spages/NAVOpen.txt"
+  note: >
+    AMFI publishes data via downloadable text/CSV exports on their public
+    statistics pages. URLs above are illustrative; verify against the
+    current AMFI India website structure before automated fetching.
+
+market_regimes:
+  covid_recovery:
+    start: "2022-01-01"
+    end: "2022-12-31"
+  rally_2023:
+    start: "2023-01-01"
+    end: "2023-12-31"
+  corrections_2024:
+    start: "2024-01-01"
+    end: "2024-12-31"
+
+performance_metrics:
+  risk_free_rate: 0.065     # 6.5% p.a., used for Sharpe ratio
+  benchmark_index: "NIFTY50"
+  rolling_window_months: 12
+
+segmentation:
+  t30_cities:
+    - Mumbai
+    - Delhi
+    - Bengaluru
+    - Chennai
+    - Kolkata
+    - Pune
+    - Hyderabad
+    - Ahmedabad
+    # ... full T30 list maintained by AMFI/SEBI
+
+feature_flags:
+  enable_ml_features: true
+  enable_dashboard_export: true
+  interpolate_quarterly_demographics: true
+  strict_validation: false
